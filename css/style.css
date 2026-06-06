@@ -1,0 +1,139 @@
+/* ============================================================
+   PORTFOLIO — style.css
+   Global variables, reset, typography, theme
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ---------- CSS Variables ---------- */
+:root {
+  --bg-primary: #f5f5f0;
+  --bg-secondary: #eeeee8;
+  --bg-card: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.55);
+  --bg-dock: rgba(220, 220, 215, 0.45);
+  --dock-border: rgba(255, 255, 255, 0.6);
+  --text-primary: #111110;
+  --text-secondary: #555550;
+  --text-muted: #999990;
+  --accent: #2a2a28;
+  --accent-light: #4a4a46;
+  --border: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.15);
+  --shadow-sm: 0 2px 12px rgba(0,0,0,0.06);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.10);
+  --shadow-lg: 0 24px 64px rgba(0,0,0,0.14);
+  --easy: #22c55e;
+  --medium: #f59e0b;
+  --hard: #ef4444;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-fast: 0.18s ease;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0e0e0d;
+  --bg-secondary: #161614;
+  --bg-card: #1c1c1a;
+  --bg-glass: rgba(28, 28, 26, 0.6);
+  --bg-dock: rgba(30, 30, 28, 0.55);
+  --dock-border: rgba(255, 255, 255, 0.1);
+  --text-primary: #f0f0eb;
+  --text-secondary: #a0a09a;
+  --text-muted: #606058;
+  --accent: #e8e8e0;
+  --accent-light: #c0c0b8;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --shadow-sm: 0 2px 12px rgba(0,0,0,0.3);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.4);
+  --shadow-lg: 0 24px 64px rgba(0,0,0,0.5);
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background 0.4s ease, color 0.4s ease;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: var(--font-body); cursor: pointer; border: none; background: none; }
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 99px; }
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4 { font-family: var(--font-display); }
+
+/* ---------- Theme Toggle ---------- */
+.theme-toggle {
+  position: fixed;
+  top: 24px;
+  right: 28px;
+  z-index: 1000;
+  width: 52px;
+  height: 28px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border-strong);
+  border-radius: 99px;
+  cursor: pointer;
+  transition: background 0.3s ease, border 0.3s ease;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  box-shadow: var(--shadow-sm);
+}
+
+.theme-toggle-knob {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+[data-theme="dark"] .theme-toggle-knob {
+  transform: translateX(24px);
+}
+
+/* ---------- Page transitions ---------- */
+.page-enter {
+  animation: pageIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Noise texture overlay ---------- */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.018;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 128px;
+}

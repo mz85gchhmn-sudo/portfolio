@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Demo Singh</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/projects.css" />
+  <link rel="stylesheet" href="../css/dock.css" />
+</head>
+<body class="page-enter">
+
+  <!-- ===== PROJECTS PAGE ===== -->
+  <main class="projects-page">
+
+    <!-- Back button -->
+    <button class="back-btn" id="back-btn" aria-label="Go back">
+      ← Back
+    </button>
+
+    <!-- Header -->
+    <div class="projects-header">
+      <h1>Projects</h1>
+      <p>Things I've built — from main projects to experiments and demos. Click any card to see more.</p>
+    </div>
+
+    <!-- Horizontal scroll row -->
+    <div class="projects-scroll-wrapper">
+      <div class="projects-scroll" id="projects-scroll">
+        <!-- Cards injected by projects.js -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ===== MODAL ===== -->
+  <div class="modal-backdrop" id="modal-backdrop" role="dialog" aria-modal="true">
+    <div class="modal" id="modal">
+      <!-- Content injected by projects.js -->
+    </div>
+  </div>
+
+  <!-- ===== SCRIPTS ===== -->
+  <script src="../js/theme.js"></script>
+  <script src="../js/projects.js"></script>
+  <script>window.__currentPage = 'projects';</script>
+  <script src="../js/dock.js"></script>
+</body>
+</html>
