@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cheatsheet — JS Dojo</title>
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/pages.css" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">JS<span class="accent">Dojo</span></a>
+    <div class="nav-links">
+      <a href="roadmap.html">Roadmap</a>
+      <a href="cheatsheet.html">Cheatsheet</a>
+      <a href="lessons.html">Lessons</a>
+    </div>
+    <div class="nav-right">
+      <div class="progress-pill"><span id="nav-progress">0 / 8 done</span></div>
+      <label class="theme-toggle" title="Toggle theme">
+        <input type="checkbox" id="theme-switch" />
+        <span class="toggle-track">
+          <span class="toggle-thumb"></span>
+          <span class="toggle-icon moon">🌙</span>
+          <span class="toggle-icon sun">☀️</span>
+        </span>
+      </label>
+    </div>
+  </nav>
+
+  <div class="cheatsheet-wrap">
+    <p class="page-eyebrow">// quick reference</p>
+    <h1 class="page-title">JS Cheatsheet</h1>
+    <p class="page-sub">Everything you've learned, one scroll away.</p>
+
+    <div class="cheatsheet-grid" id="cheatsheet-grid">
+
+      <div class="cheat-card reveal">
+        <div class="cheat-card-header"><div class="cheat-dot"></div><h3>Variable Declaration</h3></div>
+        <pre><span class="kw">var</span>   x = 1;    <span class="comment">// function-scoped, hoisted</span>
+<span class="kw">let</span>   y = 2;    <span class="comment">// block-scoped, reassignable</span>
+<span class="kw">const</span> z = 3;    <span class="comment">// block-scoped, no reassign</span></pre>
+      </div>
+
+      <div class="cheat-card reveal">
+        <div class="cheat-card-header"><div class="cheat-dot"></div><h3>Primitive Types</h3></div>
+        <pre><span class="kw">typeof</span> <span class="str">"hi"</span>       <span class="comment">// "string"</span>
+<span class="kw">typeof</span> <span class="num">42</span>        <span class="comment">// "number"</span>
+<span class="kw">typeof</span> <span class="kw">true</span>      <span class="comment">// "boolean"</span>
+<span class="kw">typeof</span> <span class="kw">undefined</span> <span class="comment">// "undefined"</span>
+<span class="kw">typeof</span> <span class="kw">null</span>      <span class="comment">// "object" ← bug</span>
+<span class="kw">typeof</span> Symbol()  <span class="comment">// "symbol"</span></pre>
+      </div>
+
+      <div class="cheat-card reveal">
+        <div class="cheat-card-header"><div class="cheat-dot"></div><h3>Type Conversion</h3></div>
+        <pre>Number(<span class="str">"42"</span>)      <span class="comment">// 42</span>
+Number(<span class="kw">true</span>)     <span class="comment">// 1</span>
+Number(<span class="kw">null</span>)     <span class="comment">// 0</span>
+String(<span class="num">42</span>)       <span class="comment">// "42"</span>
+Boolean(<span class="num">0</span>)       <span class="comment">// false</span>
+Boolean(<span class="str">""</span>)      <span class="comment">// false</span>
+Boolean({})      <span class="comment">// true</span></pre>
+      </div>
+
+      <div class="cheat-card reveal">
+        <div class="cheat-card-header"><div class="cheat-dot"></div><h3>Coercion Traps</h3></div>
+        <pre><span class="str">"5"</span> + <span class="num">3</span>          <span class="comment">// "53"</span>
+<span class="str">"5"</span> - <span class="num">3</span>          <span class="comment">// 2</span>
+<span class="kw">true</span> && <span class="str">"hello"</span>  <span class="comment">// "hello"</span>
+<span class="kw">false</span> || <span class="str">"hi"</span>   <span class="comment">// "hi"</span>
+<span class="num">0</span> ?? <span class="str">"default"</span>  <span class="comment">// 0</span>
+<span class="kw">null</span> ?? <span class="str">"def"</span>   <span class="comment">// "def"</span></pre>
+      </div>
+
+      <div class="cheat-card reveal">
+        <div class="cheat-card-header"><div class="cheat-dot"></div><h3>Operators</h3></div>
+        <pre><span class="num">5</span> === <span class="num">5</span>        <span class="comment">// true (strict)</span>
+<span class="num">5</span> == <span class="str">"5"</span>       <span class="comment">// true (loose, avoid)</span>
+<span class="num">2</span> ** <span class="num">10</span>        <span class="comment">// 1024 (exponent)</span>
+<span class="num">10</span> % <span class="num">3</span>         <span class="comment">// 1 (modulo)</span>
+x > <span class="num">10</span> ? <span class="str">'big'</span> : <span class="str">'small'</span></pre>
+      </div>
+
+      <div class="cheat-card reveal">
+        <div class="cheat-card-header"><div class="cheat-dot"></div><h3>Functions</h3></div>
+        <pre><span class="kw">function</span> add(a, b) { <span class="kw">return</span> a+b; }
+<span class="kw">const</span> mul = <span class="kw">function</span>(a,b) { <span class="kw">return</span> a*b; }
+<span class="kw">const</span> sub = (a, b) => a - b;
+<span class="kw">const</span> dbl = n => n * <span class="num">2</span>;
+<span class="kw">function</span> greet(name = <span class="str">"User"</span>) {}</pre>
+      </div>
+
+      <div class="cheat-card reveal">
+        <div class="cheat-card-header"><div class="cheat-dot"></div><h3>Type Checking</h3></div>
+        <pre>Array.isArray([])        <span class="comment">// true</span>
+Number.isNaN(NaN)        <span class="comment">// true</span>
+Number.isNaN(<span class="str">"hello"</span>)   <span class="comment">// false</span>
+<span class="kw">typeof</span> []                <span class="comment">// "object"</span>
+[] <span class="kw">instanceof</span> Array      <span class="comment">// true</span></pre>
+      </div>
+
+      <div class="cheat-card reveal">
+        <div class="cheat-card-header"><div class="cheat-dot"></div><h3>Template Literals</h3></div>
+        <pre><span class="kw">const</span> name = <span class="str">"Arjun"</span>;
+<span class="kw">const</span> msg = `Hello ${name}!`;
+<span class="kw">const</span> calc = `${2 ** 8} ways`;
+<span class="comment">// Multi-line — no \n needed</span>
+<span class="kw">const</span> multi = `
+  line one
+  line two
+`;</pre>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../js/lessons-data.js"></script>
+  <script src="../js/progress.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      initScrollReveal();
+      updateNavProgress();
+    });
+  </script>
+</body>
+</html>

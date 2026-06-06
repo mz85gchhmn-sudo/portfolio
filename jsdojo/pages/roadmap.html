@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roadmap — JS Dojo</title>
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/pages.css" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">JS<span class="accent">Dojo</span></a>
+    <div class="nav-links">
+      <a href="roadmap.html">Roadmap</a>
+      <a href="cheatsheet.html">Cheatsheet</a>
+      <a href="lessons.html">Lessons</a>
+    </div>
+    <div class="nav-right">
+      <div class="progress-pill"><span id="nav-progress">0 / 8 done</span></div>
+      <label class="theme-toggle" title="Toggle theme">
+        <input type="checkbox" id="theme-switch" />
+        <span class="toggle-track">
+          <span class="toggle-thumb"></span>
+          <span class="toggle-icon moon">🌙</span>
+          <span class="toggle-icon sun">☀️</span>
+        </span>
+      </label>
+    </div>
+  </nav>
+
+  <div class="roadmap-wrap">
+    <p class="page-eyebrow">// your journey</p>
+    <h1 class="page-title">Learning Roadmap</h1>
+    <p class="page-sub">Every lesson you complete fills this up. Green means conquered.</p>
+
+    <div class="progress-bar-wrap reveal">
+      <div class="progress-bar-label">
+        <span>Overall Progress</span>
+        <span id="progress-label">0 / 8 lessons</span>
+      </div>
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <div class="roadmap-nodes" id="roadmap-nodes">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+
+  <script src="../js/lessons-data.js"></script>
+  <script src="../js/progress.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById("roadmap-nodes");
+      const fill = document.getElementById("progress-fill");
+      const label = document.getElementById("progress-label");
+      const completed = Progress.getCount();
+      const total = Progress.getTotal();
+
+      // Progress bar
+      label.textContent = `${completed} / ${total} lessons`;
+      setTimeout(() => {
+        fill.style.width = `${(completed / total) * 100}%`;
+      }, 300);
+
+      // Nodes
+      LESSONS.forEach((lesson, i) => {
+        const done = Progress.isCompleted(lesson.id);
+        const active = !done && i === completed;
+        const node = document.createElement("div");
+        node.className = `roadmap-node reveal${done ? " done" : ""}${active ? " active" : ""}`;
+        node.style.transitionDelay = `${i * 0.08}s`;
+        node.innerHTML = `
+          <div class="roadmap-icon">${lesson.emoji}</div>
+          <div class="roadmap-content">
+            <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.4rem">
+              <h3>Lesson ${lesson.id}: ${lesson.title}</h3>
+              ${done ? `<span class="roadmap-badge-inline" title="Badge earned: ${lesson.badge.label}">${lesson.badge.emoji}</span>` : ""}
+            </div>
+            <p>${lesson.subtitle}</p>
+            <div class="roadmap-tags">
+              ${lesson.tags.map(t => `<span class="roadmap-tag">${t}</span>`).join("")}
+            </div>
+          </div>
+        `;
+        node.style.cursor = "pointer";
+        node.addEventListener("click", () => {
+          window.location.href = `lessons.html?id=${lesson.id}`;
+        });
+        container.appendChild(node);
+      });
+
+      initScrollReveal();
+      updateNavProgress();
+    });
+  </script>
+</body>
+</html>

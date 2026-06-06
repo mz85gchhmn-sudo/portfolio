@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JS Dojo — Learn JavaScript</title>
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/home.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-logo">JS<span class="accent">Dojo</span></div>
+    <div class="nav-links">
+      <a href="pages/roadmap.html">Roadmap</a>
+      <a href="pages/cheatsheet.html">Cheatsheet</a>
+      <a href="pages/lessons.html">Lessons</a>
+    </div>
+    <div class="nav-right">
+      <div class="progress-pill">
+        <span id="nav-progress">0 / 8 done</span>
+      </div>
+      <label class="theme-toggle" title="Toggle theme">
+        <input type="checkbox" id="theme-switch" />
+        <span class="toggle-track">
+          <span class="toggle-thumb"></span>
+          <span class="toggle-icon moon">🌙</span>
+          <span class="toggle-icon sun">☀️</span>
+        </span>
+      </label>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="scroll-ticker" id="ticker">
+      <span>variables &nbsp;·&nbsp; types &nbsp;·&nbsp; functions &nbsp;·&nbsp; scope &nbsp;·&nbsp; closures &nbsp;·&nbsp; arrays &nbsp;·&nbsp; objects &nbsp;·&nbsp; async &nbsp;·&nbsp;</span>
+      <span aria-hidden="true">variables &nbsp;·&nbsp; types &nbsp;·&nbsp; functions &nbsp;·&nbsp; scope &nbsp;·&nbsp; closures &nbsp;·&nbsp; arrays &nbsp;·&nbsp; objects &nbsp;·&nbsp; async &nbsp;·&nbsp;</span>
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">// your javascript journey starts here</p>
+      <h1 class="hero-title">Learn JS<br /><span class="accent-outline">The Right Way</span></h1>
+      <p class="hero-sub">Lesson-based, badge-rewarded, no fluff. From variables to async — with a live code playground at every step.</p>
+      <div class="hero-cta-group">
+        <a href="pages/lessons.html" class="btn-primary">Start Learning →</a>
+        <a href="pages/roadmap.html" class="btn-ghost">View Roadmap</a>
+      </div>
+    </div>
+    <div class="hero-terminal">
+      <div class="terminal-bar">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        <span class="terminal-title">console.js</span>
+      </div>
+      <pre class="terminal-body" id="terminal-type"></pre>
+    </div>
+  </section>
+
+  <!-- HOW TO GET MAX FROM THIS SITE -->
+  <section class="section" id="howto">
+    <h2 class="section-title">// how to get the most out of this</h2>
+    <div class="howto-grid">
+      <div class="howto-card">
+        <div class="howto-num">01</div>
+        <h3>Read the brief</h3>
+        <p>Each lesson opens with a short paragraph — the core idea in plain English. Absorb that before you touch code.</p>
+      </div>
+      <div class="howto-card">
+        <div class="howto-num">02</div>
+        <h3>Scroll for depth</h3>
+        <p>More detail, examples and edge cases load as you scroll down each lesson. Don't skip — the gotchas live there.</p>
+      </div>
+      <div class="howto-card">
+        <div class="howto-num">03</div>
+        <h3>Play in the editor</h3>
+        <p>Every lesson has a live code editor. Break things. Change values. That's how it sticks.</p>
+      </div>
+      <div class="howto-card">
+        <div class="howto-num">04</div>
+        <h3>Take the quiz</h3>
+        <p>Short quiz at the end — no judgment. It locks in the concept and unlocks your badge.</p>
+      </div>
+      <div class="howto-card">
+        <div class="howto-num">05</div>
+        <h3>Claim the badge</h3>
+        <p>Pass the quiz → earn your badge. Hit 100% on all lessons to unlock the final rank.</p>
+      </div>
+      <div class="howto-card">
+        <div class="howto-num">06</div>
+        <h3>Track the roadmap</h3>
+        <p>The roadmap page shows your learning curve filling up in real time. Green = conquered.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- JS FACTS CARDS -->
+  <section class="section" id="facts">
+    <h2 class="section-title">// wild js facts</h2>
+    <div class="facts-scroll">
+      <div class="fact-card">
+        <div class="fact-tag">🔒 Primitives</div>
+        <p>Primitives are <strong>immutable</strong>. <code>let x = "hello"; x[0] = "H"</code> silently does nothing. The string stays <code>"hello"</code>.</p>
+      </div>
+      <div class="fact-card">
+        <div class="fact-tag">🤯 typeof null</div>
+        <p><code>typeof null === "object"</code> — this is a 30-year-old bug in JS that was never fixed because too much code depends on it.</p>
+      </div>
+      <div class="fact-card">
+        <div class="fact-tag">⚡ Born in 10 days</div>
+        <p>Brendan Eich wrote the first version of JavaScript in just <strong>10 days</strong> in 1995. The quirks make more sense now.</p>
+      </div>
+      <div class="fact-card">
+        <div class="fact-tag">🎭 Truthy magic</div>
+        <p><code>true && "hello"</code> returns <code>"hello"</code>. <code>false && "hello"</code> returns <code>false</code>. The <code>&&</code> operator returns values, not just booleans.</p>
+      </div>
+      <div class="fact-card">
+        <div class="fact-tag">🔄 Type coercion</div>
+        <p><code>"5" - 3</code> gives <code>2</code> but <code>"5" + 3</code> gives <code>"53"</code>. Subtraction forces numbers; addition sees a string and concatenates.</p>
+      </div>
+      <div class="fact-card">
+        <div class="fact-tag">📦 NaN is a number</div>
+        <p><code>typeof NaN === "number"</code>. Not a Number is typed as a number. Also, <code>NaN !== NaN</code> — NaN is the only value not equal to itself.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LESSON PREVIEW -->
+  <section class="section" id="lessons-preview">
+    <h2 class="section-title">// the curriculum</h2>
+    <div class="lessons-grid" id="lessons-grid">
+      <!-- Populated by JS -->
+    </div>
+    <div class="lessons-cta">
+      <a href="pages/lessons.html" class="btn-primary">Go to Lessons →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>Built by <span class="accent">you</span>, for your portfolio. &nbsp;·&nbsp; JSDojo</p>
+  </footer>
+
+  <script src="js/lessons-data.js"></script>
+  <script src="js/progress.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

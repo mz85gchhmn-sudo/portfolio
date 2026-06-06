@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lessons — JS Dojo</title>
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/lessons.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html" class="nav-logo">JS<span class="accent">Dojo</span></a>
+    <div class="nav-links">
+      <a href="roadmap.html">Roadmap</a>
+      <a href="cheatsheet.html">Cheatsheet</a>
+      <a href="lessons.html">Lessons</a>
+    </div>
+    <div class="nav-right">
+      <div class="progress-pill"><span id="nav-progress">0 / 8 done</span></div>
+      <label class="theme-toggle" title="Toggle theme">
+        <input type="checkbox" id="theme-switch" />
+        <span class="toggle-track">
+          <span class="toggle-thumb"></span>
+          <span class="toggle-icon moon">🌙</span>
+          <span class="toggle-icon sun">☀️</span>
+        </span>
+      </label>
+    </div>
+  </nav>
+
+  <div class="lessons-layout">
+    <aside class="sidebar">
+      <div class="sidebar-title">// curriculum</div>
+      <div id="sidebar"></div>
+    </aside>
+    <main class="lesson-main" id="lesson-main">
+      <!-- Rendered by lesson.js -->
+      <p style="color:var(--text3); font-family:'JetBrains Mono',monospace; font-size:0.85rem; padding-top:2rem;">Loading lesson...</p>
+    </main>
+  </div>
+
+  <div class="side-float">scroll to explore</div>
+
+  <script src="../js/lessons-data.js"></script>
+  <script src="../js/progress.js"></script>
+  <script src="../js/lesson.js"></script>
+</body>
+</html>

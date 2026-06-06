@@ -4,18 +4,30 @@
 
 const PROJECTS = [
   {
-    id: 1,
-    title: 'Main Project',
-    type: 'main',
-    badge: 'Featured',
-    badgeClass: 'badge-main',
-    emoji: '⭐',
-    description: 'This is your primary project. Update this description with what it does, the problem it solves, and the impact it has. This is your flagship showcase.',
-    fullDescription: `This is the full description of your main project. Explain what you built, why you built it, the tech stack used, challenges faced, and what you learned. This modal gives you space to tell the complete story.\n\nYou can update this content in projects.js with your real project details.`,
-    tags: ['To be updated'],
-    image: null,
-    link: '#'
-  },
+  id: 1,
+  title: 'JSDojo',
+  type: 'main',
+  badge: 'Featured',
+  badgeClass: 'badge-main',
+  emoji: '⚡',
+  description: 'An interactive JavaScript learning platform with live code playground, lesson-based curriculum, badge rewards, and progress tracking. Built from scratch.',
+  fullDescription: `JSDojo is a full JavaScript learning platform I built from scratch — no frameworks, just vanilla JS, CSS custom properties, and localStorage.
+
+It has 9 lessons covering memory, variables, types, immutability, type conversion, operators, functions, type checking, and output — each with a brief, deep-dive sections, a live code editor you can run in-browser, and a quiz that unlocks a badge.
+
+Key features:
+  → Live code playground (intercepts console.log, catches errors)
+  → Badge + progress system via localStorage
+  → Light / dark theme toggle
+  → "Coming soon" lessons already wired up (Scope, Arrays, Objects, Async)
+  → Roadmap page with animated progress bar
+  → Cheatsheet page for quick reference
+
+Tech: Vanilla JS · CSS custom properties · localStorage · IntersectionObserver API`,
+  tags: ['Vanilla JS', 'CSS', 'localStorage', 'No frameworks'],
+  image: null,
+  link: 'https://mz85gchhmn-sudo.github.io/portfolio/jsdojo/'
+},
   {
     id: 2,
     title: 'Demo Project One',
